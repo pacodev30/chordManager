@@ -58,11 +58,11 @@ class Data
 {
 public:
 
-    ///
-    /// \brief typeToString
-    /// \param type
-    /// \return
-    ///
+    /**
+     * @brief chordNameToString
+     * @param chordType
+     * @return
+     */
     static std::string chordNameToString(EChordType chordType)
     {
         switch (chordType)
@@ -80,11 +80,11 @@ public:
         }
     }
 
-    ///
-    /// \brief intervalToString
-    /// \param interval
-    /// \return
-    ///
+    /**
+     * @brief intervalToString
+     * @param interval
+     * @return
+     */
     static std::string intervalToString(EInterval interval)
     {
         switch (interval)
@@ -104,11 +104,11 @@ public:
         }
     }
 
-    ///
-    /// \brief noteToString
-    /// \param note
-    /// \return
-    ///
+    /**
+     * @brief noteToString
+     * @param note
+     * @return
+     */
     static std::string noteToString(ENote note)
     {
         switch (note)
@@ -128,11 +128,11 @@ public:
         }
     }
 
-    ///
-    /// \brief tonalToString
-    /// \param note
-    /// \return
-    ///
+    /**
+     * @brief tonalToString
+     * @param note
+     * @return
+     */
     static std::string tonalToString(ENote note)
     {
         switch (note)
@@ -152,6 +152,11 @@ public:
         }
     }
 
+    /**
+     * @brief chordNameToIntervals
+     * @param chordType
+     * @return
+     */
     static std::vector<EInterval> chordNameToIntervals(const EChordType chordType)
     {
         switch(chordType)

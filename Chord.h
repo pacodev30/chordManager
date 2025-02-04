@@ -9,39 +9,39 @@ public:
     Chord(ENote tonal, EChordType chordType);
     virtual ~Chord();
 
-    ///
-    /// \brief getName
-    /// \return
-    ///
+    /**
+     * @brief getName
+     * @return
+     */
     std::string getName() const;
 
-    ///
-    /// \brief setName
-    ///
+    /**
+     * @brief setName
+     */
     void setName();
 
-    ///
-    /// \brief printChord
-    ///
+    /**
+     * @brief printChord
+     */
     virtual void printChord() const = 0;
 
-    ///
-    /// \brief intervalToNote
-    /// \param interval
-    /// \return
-    ///
+    /**
+     * @brief intervalToNote
+     * @param interval
+     * @return
+     */
     ENote intervalToNote(const EInterval interval) const;
 
-    ///
-    /// \brief addToArpeggio
-    /// \param interval
-    ///
+    /**
+     * @brief addToArpeggio
+     * @param interval
+     */
     void addToArpeggio(const EInterval interval);
 
-    ///
-    /// \brief DeleteFromArpeggio
-    /// \param interval
-    ///
+    /**
+     * @brief deleteFromArpeggio
+     * @param interval
+     */
     void deleteFromArpeggio(const EInterval interval);
 
 protected:
