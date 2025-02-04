@@ -24,18 +24,18 @@ public:
      */
     void deleteChord(const std::string& chordName);
 
-    ///
-    /// \brief addNoteToChord
-    /// \param chordName
-    /// \param interval
-    ///
+    /**
+     * @brief addNoteToChord
+     * @param chordName
+     * @param interval
+     */
     void addNoteToChord(const std::string& chordName, const EInterval interval);
 
-    ///
-    /// \brief deleteNoteFromChord
-    /// \param chordName
-    /// \param interval
-    ///
+    /**
+     * @brief deleteNoteFromChord
+     * @param chordName
+     * @param interval
+     */
     void deleteNoteFromChord(const std::string& chordName, const EInterval interval);
 
 private:

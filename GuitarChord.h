@@ -8,9 +8,9 @@ class GuitarChord : public Chord
 public:
     GuitarChord(ENote tonal, EChordType chordType, std::string tab);
 
-    ///
-    /// \brief printChord
-    ///
+    /**
+     * @brief printChord
+     */
     void printChord() const override;
 
 private:
