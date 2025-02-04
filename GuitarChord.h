@@ -6,19 +6,7 @@
 class GuitarChord : public Chord
 {
 public:
-    GuitarChord(ENote tonal, EChordType type, std::string tab);
-
-    ///
-    /// \brief getTab
-    /// \return
-    ///
-    std::string getTab() const;
-
-    ///
-    /// \brief setTab
-    /// \param newTab
-    ///
-    void setTab(const std::string& newTab);
+    GuitarChord(ENote tonal, EChordName chordName, std::string tab);
 
     ///
     /// \brief printChord

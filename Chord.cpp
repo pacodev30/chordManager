@@ -1,14 +1,14 @@
 #include <Chord.h>
 #include <iostream>
 
-Chord::Chord(ENote tonal, EChordType type)
-    : _tonal(tonal), _type(type)
+Chord::Chord(ENote tonal, EChordName chordName)
+    : _tonal(tonal), _type(chordName)
 {
     setName();
 }
 
 Chord::~Chord()
-{  }
+{ }
 
 ///
 /// \brief Chord::getName
@@ -24,7 +24,7 @@ std::string Chord::getName() const
 ///
 void Chord::setName()
 {
-    _name = Data::tonalToString(_tonal) + Data::typeToString(_type);
+    _name = Data::tonalToString(_tonal) + Data::chordNameToString(_type);
 }
 
 ///

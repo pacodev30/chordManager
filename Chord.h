@@ -6,7 +6,7 @@
 class Chord
 {
 public:
-    Chord(ENote tonal, EChordType type);
+    Chord(ENote tonal, EChordName chordName);
     virtual ~Chord();
 
     ///
@@ -23,7 +23,7 @@ public:
     ///
     /// \brief printChord
     ///
-    virtual void printChord() const;
+    virtual void printChord() const = 0;
 
     ///
     /// \brief intervalToNote
@@ -46,7 +46,7 @@ public:
 
 protected:
     ENote _tonal;
-    EChordType _type;
+    EChordName _type;
     std::string _name;
 
     std::map<EInterval, ENote> _arpeggio;

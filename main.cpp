@@ -6,34 +6,29 @@ int main()
     ChordManager m;
 
     // CREATE CHORDS
-    m.addChord(ENote::DO, EChordType::M7M);
-    m.addChord(ENote::RE, EChordType::m7);
-    m.addChord(ENote::MI, EChordType::m);
-    m.addChord(ENote::FA, EChordType::M);
-    m.addChord(ENote::SOL, EChordType::Dom7);
-    m.addChord(ENote::LA, EChordType::m6);
-    m.addChord(ENote::SI, EChordType::m7b5);
-
-
-    m.addChord(ENote::LAb, EChordType::dim);
-    m.addNoteToChord("Abdim", EInterval::QUINTE_aug);
-    m.deleteNoteFromChord("Abdim", QUINTE_aug);
+    m.addChord(ENote::DO, EChordName::M7M);
+    m.addChord(ENote::RE, EChordName::m7);
+    m.addChord(ENote::MI, EChordName::m);
+    m.addChord(ENote::FA, EChordName::M);
+    m.addChord(ENote::SOL, EChordName::Dom7);
+    m.addChord(ENote::LA, EChordName::m6);
+    m.addChord(ENote::SI, EChordName::m7b5);
 
     // CREATE GUITARCHORD
-    std::string c_tab = "|O|x|x|\n"
-                        "|O|x|x|\n"
-                        "|x|O|x|\n"
-                        "|x|x|O|\n"
-                        "|x|x|O|\n"
-                        "|O|x|x|\n";
+    std::string c_tab = "|O|-|-|\n"
+                        "|O|-|-|\n"
+                        "|-|O|-|\n"
+                        "|-|-|O|\n"
+                        "|-|-|O|\n"
+                        "|O|-|-|\n";
+    m.addChord(ENote::MIb, EChordName::M, EChordType::GUITARCHORD, c_tab);
 
-    GuitarChord* c_guit = new GuitarChord(ENote::REb, EChordType::M, c_tab);
-    c_guit->addToArpeggio(EInterval::TONIQUE);
-    c_guit->addToArpeggio(EInterval::TIERCE);
-    c_guit->addToArpeggio(EInterval::QUINTE);
+    // MANAGE CHORD
+    m.addChord(ENote::LAb, EChordName::dim);
+    m.addNoteToChord("Abdim", EInterval::QUINTE_aug);
+    m.deleteNoteFromChord("Abdim", QUINTE_aug);
+    m.deleteChord("Abdim");
 
-    // MANAGE CHORDS
-    m.addGuitarChord(c_guit);
     m.printChords();
 
     return 0;
