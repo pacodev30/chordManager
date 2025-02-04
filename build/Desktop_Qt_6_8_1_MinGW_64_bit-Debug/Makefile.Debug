@@ -129,7 +129,8 @@ debug/GuitarChord.o: ../../GuitarChord.cpp ../../GuitarChord.h \
 
 debug/main.o: ../../main.cpp ../../ChordManager.h \
 		../../Chord.h \
-		../../Data.h
+		../../Data.h \
+		../../GuitarChord.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\main.o ..\..\main.cpp
 
 ####### Install

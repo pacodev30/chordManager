@@ -129,7 +129,8 @@ release/GuitarChord.o: ../../GuitarChord.cpp ../../GuitarChord.h \
 
 release/main.o: ../../main.cpp ../../ChordManager.h \
 		../../Chord.h \
-		../../Data.h
+		../../Data.h \
+		../../GuitarChord.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\main.o ..\..\main.cpp
 
 ####### Install

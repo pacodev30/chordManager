@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 
-enum CHORDTYPE
+enum EChordType
 {
     M,
     M69,
@@ -15,7 +15,7 @@ enum CHORDTYPE
     m7b5
 };
 
-enum INTERVAL
+enum EInterval
 {
     TONIQUE,
     SECONDE_min,
@@ -31,7 +31,7 @@ enum INTERVAL
     SEPTIEME,
 };
 
-enum NOTE
+enum ENote
 {
     DO,
     REb,
@@ -51,7 +51,12 @@ class Data
 {
 public:
 
-    static std::string typeToString(CHORDTYPE type)
+    ///
+    /// \brief typeToString
+    /// \param type
+    /// \return
+    ///
+    static std::string typeToString(EChordType type)
     {
         switch (type)
         {
@@ -68,7 +73,12 @@ public:
         }
     }
 
-    static std::string intervalToString(INTERVAL interval)
+    ///
+    /// \brief intervalToString
+    /// \param interval
+    /// \return
+    ///
+    static std::string intervalToString(EInterval interval)
     {
         switch (interval)
         {
@@ -87,7 +97,12 @@ public:
         }
     }
 
-    static std::string noteToString(NOTE note)
+    ///
+    /// \brief noteToString
+    /// \param note
+    /// \return
+    ///
+    static std::string noteToString(ENote note)
     {
         switch (note)
         {
@@ -106,7 +121,12 @@ public:
         }
     }
 
-    static std::string tonalToString(NOTE note)
+    ///
+    /// \brief tonalToString
+    /// \param note
+    /// \return
+    ///
+    static std::string tonalToString(ENote note)
     {
         switch (note)
         {

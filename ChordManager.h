@@ -9,25 +9,50 @@ public:
     ChordManager();
     ~ChordManager();
 
-    void createChord(NOTE tonal, CHORDTYPE type);
-    void readChord();
-    void UpdateChord();
-    void deleteChord();
-
     void printChords() const;
-    std::vector<INTERVAL> getIntervals() const;
+    std::vector<EInterval> getIntervals() const;
 
-    void addChord(const NOTE tonal, const CHORDTYPE type);
+    /**
+     * @brief addChord
+     * @param tonal
+     * @param type
+     */
+    void addChord(const ENote tonal, const EChordType type);
+
+    ///
+    /// \brief addGuitarChord
+    /// \param guitarChord
+    ///
     void addGuitarChord(Chord* guitarChord);
+
+    /**
+     * @brief deleteChord
+     * @param chordName
+     */
     void deleteChord(const std::string& chordName);
 
+    ///
+    /// \brief addNoteToChord
+    /// \param chordName
+    /// \param interval
+    ///
+    void addNoteToChord(const std::string& chordName, const EInterval interval);
 
-    void addNoteToChord(const std::string& chordName, const INTERVAL interval);
-    void deleteNoteFromChord(const std::string& chordName, const INTERVAL interval);
+    ///
+    /// \brief deleteNoteFromChord
+    /// \param chordName
+    /// \param interval
+    ///
+    void deleteNoteFromChord(const std::string& chordName, const EInterval interval);
 
-    std::vector<INTERVAL> setIntervals(const CHORDTYPE type);
+    ///
+    /// \brief setIntervals
+    /// \param type
+    /// \return
+    ///
+    std::vector<EInterval> setIntervals(const EChordType type);
 
 private:
-    std::vector<INTERVAL> _intervals;
+    std::vector<EInterval> _intervals;
     std::vector<Chord*> _chords;
 };

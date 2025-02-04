@@ -1,27 +1,53 @@
 #pragma once
 #include <Data.h>
-#include <map>
+#include <Map>
 #include <string>
 
 class Chord
 {
 public:
-    Chord(NOTE tonal, CHORDTYPE type);
+    Chord(ENote tonal, EChordType type);
     virtual ~Chord();
 
+    ///
+    /// \brief getName
+    /// \return
+    ///
     std::string getName() const;
+
+    ///
+    /// \brief setName
+    ///
     void setName();
 
+    ///
+    /// \brief printChord
+    ///
     virtual void printChord() const;
 
-    NOTE intervalToNote(INTERVAL interval) const;
-    void addToArpeggio(INTERVAL interval);
-    void DeleteFromArpeggio(const INTERVAL interval);
+    ///
+    /// \brief intervalToNote
+    /// \param interval
+    /// \return
+    ///
+    ENote intervalToNote(const EInterval interval) const;
+
+    ///
+    /// \brief addToArpeggio
+    /// \param interval
+    ///
+    void addToArpeggio(const EInterval interval);
+
+    ///
+    /// \brief DeleteFromArpeggio
+    /// \param interval
+    ///
+    void DeleteFromArpeggio(const EInterval interval);
 
 protected:
-    NOTE _tonal;
-    CHORDTYPE _type;
+    ENote _tonal;
+    EChordType _type;
     std::string _name;
 
-    std::map<INTERVAL, NOTE> _arpeggio;
+    std::map<EInterval, ENote> _arpeggio;
 };

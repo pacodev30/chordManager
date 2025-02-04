@@ -7,10 +7,11 @@ ChordManager::~ChordManager()
 {
     for(Chord* chord : _chords)
     {
-        std::cout << chord->getName() << "* Deleted " << std::endl;
+        // std::cout << chord->getName() << "* Deleted " << std::endl;
         delete chord;
         chord = nullptr;
     }
+    _chords.clear();
 }
 
 ///
@@ -34,7 +35,7 @@ void ChordManager::printChords() const
 /// \brief ChordManager::getIntervals
 /// \return vector<Interval>
 ///
-std::vector<INTERVAL> ChordManager::getIntervals() const
+std::vector<EInterval> ChordManager::getIntervals() const
 {
     return _intervals;
 }
@@ -44,7 +45,7 @@ std::vector<INTERVAL> ChordManager::getIntervals() const
 /// \param tonal
 /// \param type
 ///
-void ChordManager::addChord(const NOTE tonal, const CHORDTYPE type)
+void ChordManager::addChord(const ENote tonal, const EChordType type)
 {
     std::string name = Data::tonalToString(tonal) + Data::typeToString(type);
 
@@ -59,7 +60,7 @@ void ChordManager::addChord(const NOTE tonal, const CHORDTYPE type)
 
     _chords.emplace_back(new Chord(tonal, type));
 
-    for(INTERVAL i : setIntervals(type))
+    for(EInterval i : setIntervals(type))
     {
         addNoteToChord(name, i);
     }
@@ -96,7 +97,7 @@ void ChordManager::deleteChord(const std::string& chordName)
 /// \param chordName
 /// \param interval
 ///
-void ChordManager::addNoteToChord(const std::string& chordName, const INTERVAL interval)
+void ChordManager::addNoteToChord(const std::string& chordName, const EInterval interval)
 {
     for(Chord* c : _chords)
     {
@@ -112,7 +113,7 @@ void ChordManager::addNoteToChord(const std::string& chordName, const INTERVAL i
 /// \param chordName
 /// \param interval
 ///
-void ChordManager::deleteNoteFromChord(const std::string& chordName, const INTERVAL interval)
+void ChordManager::deleteNoteFromChord(const std::string& chordName, const EInterval interval)
 {
     for(Chord* c : _chords)
     {
@@ -133,19 +134,19 @@ void ChordManager::deleteNoteFromChord(const std::string& chordName, const INTER
 /// \param type
 /// \return  vector<Interval>
 ///
-std::vector<INTERVAL> ChordManager::setIntervals(const CHORDTYPE type)
+std::vector<EInterval> ChordManager::setIntervals(const EChordType type)
 {
     switch(type)
     {
-    case CHORDTYPE::M: return {INTERVAL::TONIQUE, INTERVAL::TIERCE, INTERVAL::QUINTE};
-    case CHORDTYPE::M69: return {INTERVAL::SECONDE, INTERVAL::TIERCE, INTERVAL::QUINTE, INTERVAL::SIXTE};
-    case CHORDTYPE::M7M: return {INTERVAL::TONIQUE, INTERVAL::TIERCE, INTERVAL::QUINTE, INTERVAL::SEPTIEME};
-    case CHORDTYPE::m: return {INTERVAL::TONIQUE, INTERVAL::TIERCE_min, INTERVAL::QUINTE};
-    case CHORDTYPE::m6: return {INTERVAL::TONIQUE, INTERVAL::TIERCE_min, INTERVAL::QUINTE, INTERVAL::SIXTE};
-    case CHORDTYPE::m7: return {INTERVAL::TONIQUE, INTERVAL::TIERCE_min, INTERVAL::QUINTE, INTERVAL::SEPTIEME_min};
-    case CHORDTYPE::Dom7: return {INTERVAL::TONIQUE, INTERVAL::TIERCE, INTERVAL::QUINTE, INTERVAL::SEPTIEME_min};
-    case CHORDTYPE::Dom79b: return {INTERVAL::SECONDE_min, INTERVAL::TIERCE, INTERVAL::QUINTE, INTERVAL::SEPTIEME_min};
-    case CHORDTYPE::dim: return {INTERVAL::TONIQUE, INTERVAL::TIERCE, INTERVAL::QUINTE_dim};
-    case CHORDTYPE::m7b5: return {INTERVAL::TONIQUE, INTERVAL::TIERCE_min, INTERVAL::QUINTE_dim};
+    case EChordType::M: return {EInterval::TONIQUE, EInterval::TIERCE, EInterval::QUINTE};
+    case EChordType::M69: return {EInterval::SECONDE, EInterval::TIERCE, EInterval::QUINTE, EInterval::SIXTE};
+    case EChordType::M7M: return {EInterval::TONIQUE, EInterval::TIERCE, EInterval::QUINTE, EInterval::SEPTIEME};
+    case EChordType::m: return {EInterval::TONIQUE, EInterval::TIERCE_min, EInterval::QUINTE};
+    case EChordType::m6: return {EInterval::TONIQUE, EInterval::TIERCE_min, EInterval::QUINTE, EInterval::SIXTE};
+    case EChordType::m7: return {EInterval::TONIQUE, EInterval::TIERCE_min, EInterval::QUINTE, EInterval::SEPTIEME_min};
+    case EChordType::Dom7: return {EInterval::TONIQUE, EInterval::TIERCE, EInterval::QUINTE, EInterval::SEPTIEME_min};
+    case EChordType::Dom79b: return {EInterval::SECONDE_min, EInterval::TIERCE, EInterval::QUINTE, EInterval::SEPTIEME_min};
+    case EChordType::dim: return {EInterval::TONIQUE, EInterval::TIERCE, EInterval::QUINTE_dim};
+    case EChordType::m7b5: return {EInterval::TONIQUE, EInterval::TIERCE_min, EInterval::QUINTE_dim};
     }
 }

@@ -1,22 +1,22 @@
 #include <ChordManager.h>
 #include <GuitarChord.h>
-#include "Data.h"
+
 int main()
 {
     ChordManager m;
 
     // CREATE CHORDS
-    m.addChord(NOTE::DO, CHORDTYPE::M7M);
-    m.addChord(NOTE::RE, CHORDTYPE::m7);
-    m.addChord(NOTE::MI, CHORDTYPE::m);
-    m.addChord(NOTE::FA, CHORDTYPE::M);
-    m.addChord(NOTE::SOL, CHORDTYPE::Dom7);
-    m.addChord(NOTE::LA, CHORDTYPE::m6);
-    m.addChord(NOTE::SI, CHORDTYPE::m7b5);
+    m.addChord(ENote::DO, EChordType::M7M);
+    m.addChord(ENote::RE, EChordType::m7);
+    m.addChord(ENote::MI, EChordType::m);
+    m.addChord(ENote::FA, EChordType::M);
+    m.addChord(ENote::SOL, EChordType::Dom7);
+    m.addChord(ENote::LA, EChordType::m6);
+    m.addChord(ENote::SI, EChordType::m7b5);
 
-    // MANAGE CHORDS
-    m.addChord(NOTE::LAb, CHORDTYPE::dim);
-    m.addNoteToChord("Abdim", INTERVAL::QUINTE_aug);
+
+    m.addChord(ENote::LAb, EChordType::dim);
+    m.addNoteToChord("Abdim", EInterval::QUINTE_aug);
     m.deleteNoteFromChord("Abdim", QUINTE_aug);
 
     // CREATE GUITARCHORD
@@ -27,13 +27,13 @@ int main()
                         "|x|x|O|\n"
                         "|O|x|x|\n";
 
-    GuitarChord* c_guit = new GuitarChord(NOTE::REb, CHORDTYPE::M, c_tab);
-    c_guit->addToArpeggio(INTERVAL::TONIQUE);
-    c_guit->addToArpeggio(INTERVAL::TIERCE);
-    c_guit->addToArpeggio(INTERVAL::QUINTE);
+    GuitarChord* c_guit = new GuitarChord(ENote::REb, EChordType::M, c_tab);
+    c_guit->addToArpeggio(EInterval::TONIQUE);
+    c_guit->addToArpeggio(EInterval::TIERCE);
+    c_guit->addToArpeggio(EInterval::QUINTE);
 
+    // MANAGE CHORDS
     m.addGuitarChord(c_guit);
-
     m.printChords();
 
     return 0;

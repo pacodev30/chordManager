@@ -1,7 +1,7 @@
 #include <Chord.h>
 #include <iostream>
 
-Chord::Chord(NOTE tonal, CHORDTYPE type)
+Chord::Chord(ENote tonal, EChordType type)
     : _tonal(tonal), _type(type)
 {
     setName();
@@ -47,21 +47,21 @@ void Chord::printChord() const
 /// \param interval
 /// \return Chord
 ///
-NOTE Chord::intervalToNote(INTERVAL interval) const
+ENote Chord::intervalToNote(const EInterval interval) const
 {
     int indexNote = interval + _tonal;
-    if(indexNote > NOTE::SI)
+    if(indexNote > ENote::SI)
     {
-        indexNote -= NOTE::SI + 1;
+        indexNote -= ENote::SI + 1;
     }
-    return (NOTE)indexNote;
+    return static_cast<ENote>(indexNote);
 }
 
 ///
 /// \brief Chord::addToArpeggio
 /// \param interval
 ///
-void Chord::addToArpeggio(const INTERVAL interval)
+void Chord::addToArpeggio(const EInterval interval)
 {
     for(auto arp : _arpeggio)
     {
@@ -78,7 +78,7 @@ void Chord::addToArpeggio(const INTERVAL interval)
 /// \brief Chord::DeleteFromArpeggio
 /// \param interval
 ///
-void Chord::DeleteFromArpeggio(const INTERVAL interval)
+void Chord::DeleteFromArpeggio(const EInterval interval)
 {
     auto it = _arpeggio.find(interval);
     _arpeggio.erase(it);
