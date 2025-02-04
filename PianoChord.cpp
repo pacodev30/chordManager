@@ -1,8 +1,8 @@
 #include <PianoChord.h>
 #include <iostream>
 
-PianoChord::PianoChord(ENote note, EChordName chordname)
-    : Chord(note, chordname)
+PianoChord::PianoChord(ENote note, EChordType chordType)
+    : Chord(note, chordType)
 {}
 
 void PianoChord::printChord() const

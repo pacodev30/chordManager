@@ -1,8 +1,8 @@
 #include <GuitarChord.h>
 #include <iostream>
 
-GuitarChord::GuitarChord(ENote tonal, EChordName chordName, std::string tab)
-    : Chord(tonal, chordName), _tab(tab)
+GuitarChord::GuitarChord(ENote tonal, EChordType chordType, std::string tab)
+    : Chord(tonal, chordType), _tab(tab)
 {}
 
 ///

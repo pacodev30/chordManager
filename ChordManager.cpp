@@ -29,9 +29,9 @@ void ChordManager::printChords() const
     }
 }
 
-void ChordManager::addChord(const ENote tonal, const EChordName chordName,EChordType type, std::string tab)
+void ChordManager::addChord(const ENote tonal, const EChordType chordType,EChordFamily type, std::string tab)
 {
-    std::string name = Data::tonalToString(tonal) + Data::chordNameToString(chordName);
+    std::string name = Data::tonalToString(tonal) + Data::chordNameToString(chordType);
 
     for(Chord* c : _chords)
     {
@@ -42,13 +42,13 @@ void ChordManager::addChord(const ENote tonal, const EChordName chordName,EChord
         }
     }
 
-    if(type == EChordType::PIANOCHORD)
-        _chords.emplace_back(new PianoChord(tonal, chordName));
+    if(type == EChordFamily::PIANOCHORD)
+        _chords.emplace_back(new PianoChord(tonal, chordType));
 
-    else if(type == EChordType::GUITARCHORD)
-        _chords.emplace_back(new GuitarChord(tonal, chordName, tab));
+    else if(type == EChordFamily::GUITARCHORD)
+        _chords.emplace_back(new GuitarChord(tonal, chordType, tab));
 
-    for(EInterval i : Data::chordNameToIntervals(chordName))
+    for(EInterval i : Data::chordNameToIntervals(chordType))
     {
         addNoteToChord(name, i);
     }
@@ -87,7 +87,7 @@ void ChordManager::deleteNoteFromChord(const std::string& chordName, const EInte
     {
         if(c->getName() == chordName)
         {
-            c->DeleteFromArpeggio(interval);
+            c->deleteFromArpeggio(interval);
             std::cout << "Interval "
                       << Data::intervalToString(interval)
                       << " is deleted succesfully from "

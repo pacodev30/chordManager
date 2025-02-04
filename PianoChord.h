@@ -5,7 +5,7 @@
 class PianoChord : public Chord
 {
 public:
-    PianoChord(ENote note, EChordName chordname);
+    PianoChord(ENote note, EChordType chordType);
 
     void printChord() const override;
 };

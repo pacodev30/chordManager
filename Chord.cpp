@@ -1,8 +1,8 @@
 #include <Chord.h>
 #include <iostream>
 
-Chord::Chord(ENote tonal, EChordName chordName)
-    : _tonal(tonal), _type(chordName)
+Chord::Chord(ENote tonal, EChordType chordType)
+    : _tonal(tonal), _chordType(chordType)
 {
     setName();
 }
@@ -24,7 +24,7 @@ std::string Chord::getName() const
 ///
 void Chord::setName()
 {
-    _name = Data::tonalToString(_tonal) + Data::chordNameToString(_type);
+    _name = Data::tonalToString(_tonal) + Data::chordNameToString(_chordType);
 }
 
 ///
@@ -78,7 +78,7 @@ void Chord::addToArpeggio(const EInterval interval)
 /// \brief Chord::DeleteFromArpeggio
 /// \param interval
 ///
-void Chord::DeleteFromArpeggio(const EInterval interval)
+void Chord::deleteFromArpeggio(const EInterval interval)
 {
     auto it = _arpeggio.find(interval);
     _arpeggio.erase(it);

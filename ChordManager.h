@@ -16,7 +16,7 @@ public:
      * @param tonal
      * @param type
      */
-    void addChord(const ENote tonal, const EChordName chordName, EChordType type = EChordType::PIANOCHORD, std::string tab = "");
+    void addChord(const ENote tonal, const EChordType chordType, EChordFamily type = EChordFamily::PIANOCHORD, std::string tab = "");
 
     /**
      * @brief deleteChord

@@ -6,7 +6,7 @@
 class GuitarChord : public Chord
 {
 public:
-    GuitarChord(ENote tonal, EChordName chordName, std::string tab);
+    GuitarChord(ENote tonal, EChordType chordType, std::string tab);
 
     ///
     /// \brief printChord
