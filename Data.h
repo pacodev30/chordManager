@@ -1,5 +1,12 @@
 #pragma once
 #include <string>
+#include <vector>
+
+enum EChordFamily
+{
+    PIANOCHORD,
+    GUITARCHORD
+};
 
 enum EChordType
 {
@@ -56,9 +63,9 @@ public:
     /// \param type
     /// \return
     ///
-    static std::string typeToString(EChordType type)
+    static std::string chordNameToString(EChordType chordType)
     {
-        switch (type)
+        switch (chordType)
         {
         case M: return "";
         case M69: return "6add9";
@@ -142,6 +149,23 @@ public:
         case LA: return "A";
         case SIb: return "Bb";
         case SI: return "B";
+        }
+    }
+
+    static std::vector<EInterval> chordNameToIntervals(const EChordType chordType)
+    {
+        switch(chordType)
+        {
+        case EChordType::M: return {EInterval::TONIQUE, EInterval::TIERCE, EInterval::QUINTE};
+        case EChordType::M69: return {EInterval::SECONDE, EInterval::TIERCE, EInterval::QUINTE, EInterval::SIXTE};
+        case EChordType::M7M: return {EInterval::TONIQUE, EInterval::TIERCE, EInterval::QUINTE, EInterval::SEPTIEME};
+        case EChordType::m: return {EInterval::TONIQUE, EInterval::TIERCE_min, EInterval::QUINTE};
+        case EChordType::m6: return {EInterval::TONIQUE, EInterval::TIERCE_min, EInterval::QUINTE, EInterval::SIXTE};
+        case EChordType::m7: return {EInterval::TONIQUE, EInterval::TIERCE_min, EInterval::QUINTE, EInterval::SEPTIEME_min};
+        case EChordType::Dom7: return {EInterval::TONIQUE, EInterval::TIERCE, EInterval::QUINTE, EInterval::SEPTIEME_min};
+        case EChordType::Dom79b: return {EInterval::SECONDE_min, EInterval::TIERCE, EInterval::QUINTE, EInterval::SEPTIEME_min};
+        case EChordType::dim: return {EInterval::TONIQUE, EInterval::TIERCE, EInterval::QUINTE_dim};
+        case EChordType::m7b5: return {EInterval::TONIQUE, EInterval::TIERCE_min, EInterval::QUINTE_dim};
         }
     }
 };
